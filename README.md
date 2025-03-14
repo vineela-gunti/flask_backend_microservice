@@ -142,6 +142,8 @@ show collections
 db.executions.find({"execution_id": "<execution-id>"}).pretty()
 ```
 
+---
+
 ### **Scope for Automation**
 **Jenkins Integration:** Set up Jenkins CI/CD pipelines to automate application deployment and unit testing.
 - **Deployment Pipeline:** The pipeline includes stages such as:
