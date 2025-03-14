@@ -68,7 +68,7 @@ def test_fetch_pod_logs_no_pod(mock_k8s_api):
 def test_create_k8s_job_success(mock_k8s_api):
     """ Test successful creation of a Kubernetes job """
     mock_k8s, _ = mock_k8s_api
-    mock_k8s.create_namespaced_job.return_value = None  # Mock successful job creation
+    mock_k8s.create_namespaced_job.return_value = None  
 
     job_name = create_k8s_job("test-job", "print('Hello, Kubernetes!')")
     assert job_name == "test-job"

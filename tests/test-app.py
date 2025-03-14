@@ -5,7 +5,6 @@ import json
 import base64
 from unittest.mock import patch, MagicMock
 
-# Ensure the app module is found
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from app import app
@@ -33,6 +32,7 @@ def test_execute_code_success():
         mock_mongo_update.assert_called_once()
 
 def test_execute_code_invalid_language():
+    """ Test against invalid language"""
     client = app.test_client()
     data = {"language": "java", "code": "somecode"}
     response = client.post("/execute", data=json.dumps(data), content_type="application/json")
@@ -41,6 +41,7 @@ def test_execute_code_invalid_language():
     assert response.json == {"detail": "Only Python is supported"}
 
 def test_execute_code_invalid_base64():
+    """ Test against invalid base64 code"""
     client = app.test_client()
     data = {"language": "python", "code": "notbase64"}
     response = client.post("/execute", data=json.dumps(data), content_type="application/json")
@@ -49,6 +50,7 @@ def test_execute_code_invalid_base64():
     assert response.json == {"detail": "Invalid base64-encoded code"}
 
 def test_get_result_found():
+    """ Test for checking if data is retreived from the database correctly"""
     client = app.test_client()
     fake_execution = {
         "execution_id": "12345",
@@ -64,6 +66,7 @@ def test_get_result_found():
         assert response.json["output"] == "Hello World"
 
 def test_get_result_not_found():
+    """ Test for checking if execution is not found in DB"""
     client = app.test_client()
     
     with patch.object(collection, "find_one", return_value=None):
