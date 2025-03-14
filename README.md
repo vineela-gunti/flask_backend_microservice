@@ -13,13 +13,13 @@ This microservice allows clients to submit base64-encoded Python code for execut
 ## 📌 **Prerequisites**
 Ensure you have the following installed before setting up the application.
 
-### **1️⃣ Git clone the repository**
+### **Git clone the repository**
 ```bash
-git clone https://github.com/dummy-user/dummy-repo.git
-cd dummy-repo
+git clone https://github.com/vineela-gunti/flask_backend_microservice.git
+cd flask_backend_microservice.git
 ```
 ---
-### **1️⃣ Docker Installation**
+### **Docker Installation**
 For macOS users:
 - Download **Docker Desktop** from [here](https://www.docker.com/products/docker-desktop/).
 - Install it based on your system:
@@ -48,7 +48,7 @@ docker --version
 ```
 ---
 
-### **2️⃣ Minikube Installation (For Kubernetes)**
+### **Minikube Installation (For Kubernetes)**
 Install **Minikube** using Homebrew:
 ```bash
 brew install minikube
@@ -58,7 +58,7 @@ This starts a Kubernetes cluster for executing jobs.
 
 ---
 
-### **3️⃣ Install Dependencies**
+### **Install Dependencies**
 The microservice can be run using either **FastAPI** or **Flask**.
 
 ```bash
@@ -141,3 +141,16 @@ use code_execution_db
 show collections
 db.executions.find({"execution_id": "<execution-id>"}).pretty()
 ```
+
+### **Scope for Automation**
+**Jenkins Integration:** Set up Jenkins CI/CD pipelines to automate application deployment and unit testing.
+- **Deployment Pipeline:** The pipeline includes stages such as:
+  - Code checkout from version control.
+  - Installation of necessary prerequisites.
+  - Running the application.
+  - Integrating Postman to execute API testing through collections.
+- **Testing Pipeline:** Automatically triggered in the post section of the deployment pipeline to run unit tests and ensure the quality of the application.
+- **Cleanup Pipeline:** A dedicated pipeline that:
+  - Deletes Kubernetes jobs.
+  - Stops the application.
+  - Removes MongoDB containers to ensure a clean environment.
