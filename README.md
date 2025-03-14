@@ -34,7 +34,7 @@ For macOS users:
 
 ---
 For Windows Users:
-- Download Docker Desktop from here.
+- Download Docker Desktop from here (https://www.docker.com/get-started/#:~:text=Download%20for%20Windows%20%2D%20AMD64).
 - Run the installer and follow the installation steps.
 - Ensure WSL 2 Backend is enabled (if using Windows Subsystem for Linux).
 - After installation, restart your system.
@@ -59,7 +59,6 @@ This starts a Kubernetes cluster for executing jobs.
 ---
 
 ### **Install Dependencies**
-The microservice can be run using either **FastAPI** or **Flask**.
 
 ```bash
 pip3 install -r requirements.txt
@@ -110,12 +109,12 @@ curl -X GET http://127.0.0.1:8000/result/<execution-id?>
 ---
 
 ### **Running Unit Tests**
-Unit tests fo API checkpoints and MongoDB integration
+Unit tests for API checkpoints and MongoDB integration
 ```bash
 python3 -m pytest tests/test-app.py
 
 ```
-Unit tests kubernetes integration
+Unit tests for kubernetes integration
 ```bash
 python3 -m pytest tests/test-k8s.py
 
