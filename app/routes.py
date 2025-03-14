@@ -25,7 +25,6 @@ def setup_routes(app):
     def log_response(response):
         """ Log the outgoing response details """
         logger.info(f"Response status: {response.status}")
-        logger.info(f"Response data: {response.get_data(as_text=True)}")
         return response
 
     @app.route("/execute", methods=["POST"])
