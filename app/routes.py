@@ -3,15 +3,11 @@ from flask import request, jsonify
 import base64
 import uuid
 from .logger import setup_logger
+from .models import collection 
 from .k8s.k8s_job import check_job_status, get_pod_name, fetch_pod_logs, create_k8s_job
-import pymongo
 import time
 
 logger = setup_logger()
-
-client = pymongo.MongoClient("mongodb://localhost:27018/")
-db = client["code_execution_db"]
-collection = db["executions"]
 
 class CodeRequest:
     def __init__(self, language, code):
