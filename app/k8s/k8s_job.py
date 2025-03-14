@@ -1,7 +1,6 @@
 # flask_backend_microservice/app/k8s/job_manager.py
 from kubernetes import client as k8s_client, config
 from kubernetes.client.exceptions import ApiException  
-import time
 
 # Load Kubernetes config
 config.load_kube_config()
@@ -15,10 +14,10 @@ def check_job_status(job_name):
         if job.status.succeeded == 1:
             return "complete"
         return "pending"
-    except ApiException as e:  # Corrected exception handling
-        print(f"Kubernetes API Error: {e}")  # Log the error for debugging
+    except ApiException as e:  
+        print(f"Kubernetes API Error: {e}")  
         return "pending"
-    except Exception as e:  # Handles unexpected errors
+    except Exception as e:  
         print(f"Unexpected error: {e}")
         return "pending"
 
